@@ -18,7 +18,7 @@
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/ecommerce_task.git
+   git clone https://github.com/manitcodes247/ecommerce_task.git
    cd ecommerce_task
    ```
 
@@ -48,7 +48,7 @@
    ```
 
 ## API Testing
-Use the provided Postman collection: `ecommerce_task.postman_collection.json`
+Use the provided Postman collection: `localhost-8000.postman_collection.json`
 
 ### Available Endpoints
 
