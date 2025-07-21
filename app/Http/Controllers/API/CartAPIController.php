@@ -6,18 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CartItem;
 use App\Models\Product;
+use App\Models\User;
 
-class CartController extends Controller
+class CartAPIController extends Controller
 {
-    public function add(Request $request){
-        $item = CartItem::create([
-            'user_id' => 1,
-            'product_id' => $request->product_id,
-            'quantity' => $request->quantity ?? 1
-        ]);
-
-        return response()->json($item, 201);
-    }
 
     public function list(){
         $cart = CartItem::with('product.images')->where('user_id', 1)->get();
@@ -30,6 +22,16 @@ class CartController extends Controller
             'items' => $cart,
             'total' => $total
         ]);
+    }
+
+    public function add(Request $request){
+        $item = CartItem::create([
+            'user_id' => 1,
+            'product_id' => $request->product_id,
+            'quantity' => $request->quantity ?? 1
+        ]);
+
+        return response()->json($item, 201);
     }
 
     public function update(Request $request, $id){

@@ -53,6 +53,19 @@
               <p>Products</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ url('/admin/cart') }}" class="nav-link">
+                <i class="nav-icon fas fa-shopping-cart"></i>
+                <p>Cart</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{ url('/admin/orders') }}" class="nav-link">
+                <i class="nav-icon fas fa-box"></i>
+                <p>Orders</p>
+            </a>
+        </li>
         </ul>
       </nav>
     </div>

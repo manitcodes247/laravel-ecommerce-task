@@ -2,16 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProductAPIController;
-use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\API\CartAPIController;
 
 Route::get('/products', [ProductAPIController::class, 'index']);
 
-Route::post('/cart/add', [CartController::class, 'add']);
-Route::get('/cart', [CartController::class, 'list']);
-Route::put('/cart/update/{id}', [CartController::class, 'update']);
-Route::delete('/cart/delete/{id}', [CartController::class, 'delete']);
-Route::post('/cart/checkout', [CartController::class, 'checkout']);
-
-Route::get('/test-api', function () {
-    return response()->json(['message' => 'API working!']);
+Route::prefix('cart')->controller(CartAPIController::class)->group(function () {
+    Route::get('/', 'list');
+    Route::post('/add', 'add');
+    Route::put('/update/{id}', 'update');
+    Route::delete('/delete/{id}', 'delete');
+    Route::post('/checkout', 'checkout');
 });
+
+Route::get('/test-api', fn () => response()->json(['message' => 'API working!']));
